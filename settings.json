@@ -1,0 +1,10 @@
+{
+    "availabilities": [
+        {
+            "name": "Yosemite - Hodgdon",
+            "campsiteIds": ["232451"],
+            "dates": ["6/22/20", "6/20/20"],
+            "occupants": "2"
+        }
+    ]
+}
