@@ -16,8 +16,8 @@ class TestReader(unittest.TestCase):
         yos = availabilityChecks[0]
         self.assertEqual(yos.name, "Yosemite - Hodgdon")
         self.assertEqual(yos.campsiteIds[0], "232451")
-        self.assertEqual(yos.dates[0], "6/22/20")
-        self.assertEqual(yos.dates[1], "6/20/20")
+        self.assertEqual(yos.dates[0].strftime("%x"), "06/22/20")
+        self.assertEqual(yos.dates[1].strftime("%x"), "06/20/20")
         self.assertEqual(yos.occupants, 2)
 
 
