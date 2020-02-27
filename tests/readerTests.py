@@ -7,18 +7,18 @@ import reader
 class TestReader(unittest.TestCase):
 
     def testEmptyFile(self):
-        self.assertEqual(len(reader.readFile("tests/testFiles/empty.json")), 0)
+        self.assertEqual(0, len(reader.readFile("tests/testFiles/empty.json")))
     
     def testOneAvailability(self):
         availabilityChecks = reader.readFile("tests/testFiles/one.json")
-        self.assertEqual(len(availabilityChecks), 1)
+        self.assertEqual(1, len(availabilityChecks))
 
         yos = availabilityChecks[0]
-        self.assertEqual(yos.name, "Yosemite - Hodgdon")
-        self.assertEqual(yos.campsiteIds[0], "232451")
-        self.assertEqual(yos.dates[0].strftime("%x"), "06/22/20")
-        self.assertEqual(yos.dates[1].strftime("%x"), "06/20/20")
-        self.assertEqual(yos.occupants, 2)
+        self.assertEqual("Yosemite - Hodgdon", yos.name)
+        self.assertEqual("232451", yos.campsiteIds[0])
+        self.assertEqual("06/22/20", yos.dates[0].strftime("%x"))
+        self.assertEqual("06/20/20", yos.dates[1].strftime("%x"))
+        self.assertEqual(2, yos.occupants)
 
 
 if __name__ == '__main__':
