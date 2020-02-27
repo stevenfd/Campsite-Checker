@@ -8,22 +8,26 @@ import datetime
 
 class requestHandlerTests(unittest.TestCase):
     
+    def testPerformRequests(self):
+        check = AvailabilityCheck("Test", ["232451"], [datetime.datetime(2020, 6, 22)], 2)
+        requestHandler.performRequests(check)
+
     def testGenerateRequestUrls_SingleCamp(self): 
         check = AvailabilityCheck("Test", ["1"], [datetime.datetime(2020, 1, 22), datetime.datetime(2020, 10, 29), datetime.datetime(2021, 1, 22)], 2)
         result = requestHandler.generateRequestUrls(check)
         self.assertEqual(3, len(result))
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-01-01T00:00:00T00%3A00%3A00.000Z' in result)
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2021-01-01T00:00:00T00%3A00%3A00.000Z' in result)
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-10-01T00:00:00T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-01-01T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2021-01-01T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-10-01T00%3A00%3A00.000Z' in result)
     
     def testGenerateRequestUrls_MultipleCamp(self): 
         check = AvailabilityCheck("Test", ["1", "2"], [datetime.datetime(2020, 1, 22), datetime.datetime(2020, 10, 29)], 2)
         result = requestHandler.generateRequestUrls(check)
         self.assertEqual(4, len(result))
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-01-01T00:00:00T00%3A00%3A00.000Z' in result)
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-10-01T00:00:00T00%3A00%3A00.000Z' in result)
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/2/month?start_date=2020-01-01T00:00:00T00%3A00%3A00.000Z' in result)
-        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/2/month?start_date=2020-10-01T00:00:00T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-01-01T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/1/month?start_date=2020-10-01T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/2/month?start_date=2020-01-01T00%3A00%3A00.000Z' in result)
+        self.assertTrue('https://www.recreation.gov/api/camps/availability/campground/2/month?start_date=2020-10-01T00%3A00%3A00.000Z' in result)
 
 
 
